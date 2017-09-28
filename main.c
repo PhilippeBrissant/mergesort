@@ -16,10 +16,10 @@ void merge(int arr[], int prim, int ult, int meio)
     for(i = 0; i < tamDir; i ++)
         dir[i] = arr[meio+1+i];
 
-    int li = 0, ri = 0, ai = 0;
+    int li = 0, ri = 0, ai = prim;
     while(li<tamEsq && ri<tamDir)
     {
-        if(esq[li]<dir[ri])
+        if(esq[li] < dir[ri])
         {
             arr[ai] = esq[li];
             li++;
@@ -34,10 +34,15 @@ void merge(int arr[], int prim, int ult, int meio)
     }
 
     for(i = li; i < tamEsq; i ++)
+    {
         arr[ai] = esq[i];
-
+        ai++;
+    }
     for(i = ri; i < tamDir; i ++)
+    {
         arr[ai] = dir[i];
+        ai++;
+    }
 }
 
 void particiona(int arr[], int prim, int ult)
@@ -62,13 +67,16 @@ void printArray(int A[], int size)
 
 int main()
 {
-    int i[] = {3,195,375,654,0,1,85,56,987,1567,12,56,74,5,4,2,7,9,87,89,321};
+    //int arr[] = {3,195,375,654,0,1,85,56,987,1567,12,56,74,5,4,2,7,9,87,89,321};
+    int arr[] = {5,7,8,6,2,0,1};
 
-    printf("Given array is \n");
-    printArray(i, 21);
+    printf("Arr:\n");
+    printArray(arr, 7);
 
-    particiona(i, 21, 20);
-    printArray(i, 21);
+    particiona(arr, 7, 6);
+
+    printf("Array ordenado: \n");
+    printArray(arr, 7);
 
     return 0;
 }
